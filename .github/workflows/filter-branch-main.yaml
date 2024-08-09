@@ -1,8 +1,8 @@
-name: Demo - Pipeline rodando apenas em stage
+name: Demo - Pipeline rodando apenas em production
 on: 
   push:
     branches:
-      - stage
+      - main
 jobs:
   run-tests:
     runs-on: ubuntu-latest
@@ -27,5 +27,5 @@ jobs:
       - name: Build app
         run: echo "Building app..."
 
-      - name: Deploy to stage
-        run: echo "Deploying to stage..."
+      - name: Deploy to production
+        run: echo "Deploying to production..."
