@@ -1,4 +1,4 @@
-name: Demo - Workflow rodando apenas em production
+name: Manual
 on: 
   workflow_dispatch:
   push:

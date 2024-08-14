@@ -1,4 +1,4 @@
-name: Demo - Workflow rodando apenas em stage
+name: branch stage
 on: 
   push:
     branches:
