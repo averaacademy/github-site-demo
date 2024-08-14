@@ -1,8 +1,9 @@
 name: Demo - Workflow rodando apenas em production
 on: 
+  workflow_dispatch:
   push:
     branches-ignore:
-      - main
+      - stage
 jobs:
   run-tests:
     runs-on: ubuntu-latest
