@@ -33,4 +33,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to server
-        run: echo "Deploying to server"
+        run: echo "Deploying ${{ needs.build.outputs.versao }} to server"
