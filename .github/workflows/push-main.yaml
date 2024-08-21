@@ -37,9 +37,23 @@ jobs:
         run: |
           TAG=$(date +'%Y-%m-%d-%H-%M-%S')
           echo "tag=${TAG}" >> "$GITHUB_OUTPUT"
-          docker build -t github-actions-site:$TAG .
         id: docker_build
-          
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: averaacademy
+          password: ${{ secrets.DOCKERHUB_PAT }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: averaacademy/github-actions-site:${{ steps.docker_build.outputs.tag }}
+  
+        
   deploy:
     needs: [build]
     runs-on: ubuntu-latest
