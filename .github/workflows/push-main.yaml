@@ -13,9 +13,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: npm install
-
       - name: Get npm cache directory
         id: npm-cache-dir
         shell: bash
@@ -27,6 +24,9 @@ jobs:
           path: ${{ steps.npm-cache-dir.outputs.dir }}
           key: node-npm-cache-${{ hashFiles('**/package-lock.json') }}
 
+      - name: Install dependencies
+        run: npm install
+  
       - name: Run tests
         run: npm test
 
