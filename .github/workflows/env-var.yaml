@@ -1,0 +1,32 @@
+name: Testes Env var
+
+on:
+  workflow_dispatch:
+
+env:
+  WORKFLOW_ENV: "GLOBAL"
+  WORKFLOW_SHARED_ENV: "GLOBAL SHARED"
+
+jobs:
+  env-var-job:
+    name: Teste env var
+    runs-on: ubuntu-latest
+    env:
+      JOB_ENV: "JOB"
+      JOB_SHARED_ENV: "JOB SHARED"
+      WORKFLOW_SHARED_ENV: "JOB SOBRESCREVEU GLOBAL SHARED"
+    steps:
+      - name: Exibir env vars
+        env:
+          STEP_ENV: "STEP"
+          JOB_SHARED_ENV: "STEP SOBRESCREVEU SHARED"
+        run: |
+            echo "Workflow Level WORKFLOW_ENV: $WORKFLOW_ENV"
+            echo "Job Level JOB_ENV: $JOB_ENV"
+            echo "Step Level STEP_ENV: $STEP_ENV"
+            echo "==== VARIAVEIS SHARED ===="
+            echo "Workflow Shared WORKFLOW_SHARED_ENV: $WORKFLOW_SHARED_ENV"
+            echo "Job Shared JOB_SHARED_ENV: $JOB_SHARED_ENV"
+
+
+            
