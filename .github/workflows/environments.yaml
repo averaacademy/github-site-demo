@@ -1,0 +1,37 @@
+name: Testes variables
+
+on:
+  workflow_dispatch:
+
+jobs:
+  dev-job:
+    name: variables dev
+    environment: dev
+    runs-on: ubuntu-latest
+    steps:
+      - name: Exibir variáveis
+        run: |
+            echo "Variable CONTA_ID: ${{ vars.CONTA_ID }}"
+            echo "Variable CONTADOR: ${{ vars.CONTADOR }}"
+
+  hml-job:
+    name: variables hml
+    environment: hml
+    needs: dev-job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Exibir variáveis
+        run: |
+            echo "Variable CONTA_ID: ${{ vars.CONTA_ID }}"
+            echo "Variable CONTADOR: ${{ vars.CONTADOR }}"
+            
+  prd-job:
+    name: variables prd
+    environment: prd
+    needs: hml-job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Exibir variáveis
+        run: |
+            echo "Variable CONTA_ID: ${{ vars.CONTA_ID }}"
+            echo "Variable CONTADOR: ${{ vars.CONTADOR }}"
