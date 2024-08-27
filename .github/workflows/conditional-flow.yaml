@@ -23,6 +23,7 @@ jobs:
         run: npm install
   
       - name: Run tests
+        continue-on-error: true
         id: run-tests
         run: npm run fail-test -- --reporter json > test-result.json
 
