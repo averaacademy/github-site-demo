@@ -8,6 +8,10 @@ on:
         required: true
         default: "dev"
         type: string
+    secrets:
+      SUPER_SECRET:
+        description: "Super secret"
+        required: true
 jobs:
   test-job:
     name: Run tests
@@ -21,3 +25,7 @@ jobs:
 
       - name: Deploy to 
         run: echo "Fazendo deploy no ambiente ${{ inputs.deploy-to }}"
+
+      - name: Exibir secrets
+        run: |
+          echo "Super secret: ${{ secrets.SUPER_SECRET }}"
