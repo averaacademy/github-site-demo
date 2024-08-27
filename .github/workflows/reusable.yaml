@@ -12,10 +12,16 @@ on:
       SUPER_SECRET:
         description: "Super secret"
         required: true
+    outputs:
+      success:
+        description: "Se o deploy foi feito com sucesso"
+        value: ${{ jobs.test-job.outputs.outcome }}
 jobs:
   test-job:
     name: Run tests
     runs-on: ubuntu-latest
+    outputs:
+      outcome: ${{ steps.set-output.outputs.OUTPUT }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,3 +35,7 @@ jobs:
       - name: Exibir secrets
         run: |
           echo "Super secret: ${{ secrets.SUPER_SECRET }}"
+
+      - name: Set output
+        id: set-output
+        run: echo "OUTPUT='sucesso de output'" >> "$GITHUB_OUTPUT"
