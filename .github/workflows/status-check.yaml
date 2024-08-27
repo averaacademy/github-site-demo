@@ -30,3 +30,11 @@ jobs:
       - name: Step 6 - Sempre executa
         if: always()
         run: echo "Esto Step é executado independentemente do que aconteceu antes"
+        
+  fail-report:
+    runs-on: ubuntu-latest
+    if: failure()
+    needs: status-check
+    steps:
+      - name: Reportar falha
+        run: echo "O workflow falhou"
