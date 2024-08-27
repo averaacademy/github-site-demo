@@ -1,0 +1,8 @@
+name: shared workflow demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  shared-job:
+    uses: ./.github/workflows/reusable.yaml
