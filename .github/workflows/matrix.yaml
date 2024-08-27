@@ -6,7 +6,7 @@ jobs:
     strategy:
       matrix:
         sistema-operacional: [ubuntu-latest, windows-latest]
-        nodejs: [12, 14, 18]
+        nodejs: [14, 18]
     runs-on: ${{ matrix.sistema-operacional }}
     steps:
       - name: Checkout
