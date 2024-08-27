@@ -5,7 +5,7 @@ jobs:
   matrix-demo:
     strategy:
       matrix:
-        sistema-operacional: [ubuntu-latest, windows-latest, macos-latest]
+        sistema-operacional: [ubuntu-latest, windows-latest]
         nodejs: [12, 14, 18]
     runs-on: ${{ matrix.sistema-operacional }}
     steps:
