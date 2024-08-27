@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Site que faz parte do material para o curso de Github Actions",
   "scripts": {
-    "test": "mocha tests",
+    "test": "mocha tests/sucess.js",
+    "fail-test": "mocha tests/fail.js",
     "build": "parcel build index.html",
     "start": "live-server dist --open=index.html"
   },
