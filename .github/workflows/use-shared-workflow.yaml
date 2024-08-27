@@ -5,7 +5,7 @@ on:
 
 jobs:
   shared-job:
-    uses: averaacademy/github-site-demo/.github/workflows/reusable.yaml
+    uses: averaacademy/github-site-demo/.github/workflows/reusable.yaml@main
     with:
       deploy-to: "prod"
     secrets: inherit
