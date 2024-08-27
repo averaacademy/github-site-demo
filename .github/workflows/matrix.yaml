@@ -7,6 +7,9 @@ jobs:
       matrix:
         sistema-operacional: [ubuntu-latest, windows-latest]
         nodejs: [14, 18]
+        include: 
+          - sistema-operacional: ubuntu-latest
+            nodejs: 16
     runs-on: ${{ matrix.sistema-operacional }}
     steps:
       - name: Checkout
