@@ -28,7 +28,7 @@ jobs:
         run: npm run fail-test -- --reporter json > test-result.json
 
       - name: Upload artifacts
-        if: failure() && steps.run-tests.outcome == 'failure'
+        if: steps.run-tests.outcome == 'failure'
         uses: actions/upload-artifact@v4
         with:
           name: test-results
