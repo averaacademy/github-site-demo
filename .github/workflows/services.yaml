@@ -1,0 +1,21 @@
+name: services demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  services-demo:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: avera
+          POSTGRES_PASSWORD: averapassword
+
+    steps:
+      - name: Verificar conectividade com PostgreSQL na porta 5432
+        run: |
+          nc -zv localhost 5432
