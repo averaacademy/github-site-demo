@@ -1,0 +1,30 @@
+name: Status Check
+
+on:  
+    workflow_dispatch:
+
+jobs:
+  status-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step 1 - Sempre com sucesso
+        run: echo "Este Step sempre roda com sucesso"
+      
+      - name: Step 2 - Apenas em caso de sucesso
+        if: success()
+        run: echo "Este Step só é executado se os Steps anteriores foram bem-sucedidos"
+      
+      - name: Step 3 - Falha intencional
+        run: exit 1
+      
+      - name: Step 4 - Executa em caso de falha
+        if: failure()
+        run: echo "Esto Step é executada porque uma Step anterior falhou"
+      
+      - name: Step 5 - Executa em caso de cancelamento
+        if: cancelled()
+        run: echo "Esto Step é executada se o workflow for cancelado"
+      
+      - name: Step 6 - Sempre executa
+        if: always()
+        run: echo "Esto Step é executado independentemente do que aconteceu antes"
