@@ -1,0 +1,12 @@
+name: custom action demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Utilizando a custom action
+        uses: averaacademy/custom-action-demo/checkout-install-test@main
+    
