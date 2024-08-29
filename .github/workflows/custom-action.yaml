@@ -1,0 +1,21 @@
+name: custom action demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Utilizando a custom action
+        id: custom_action_demo
+        uses: averaacademy/custom-action-demo/checkout-install-test@main
+        with:
+          use_cache: 'false'
+
+      - name: build
+        run: npm run build
+
+      - name: "Testes com sucesso?"
+        run: "echo 'Testes passaram com sucesso: ${{ steps.custom_action_demo.outputs.test_success }}'"
+    
