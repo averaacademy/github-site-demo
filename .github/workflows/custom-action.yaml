@@ -9,6 +9,9 @@ jobs:
     steps:
       - name: Utilizando a custom action
         uses: averaacademy/custom-action-demo/checkout-install-test@main
+        with:
+          use_cache: 'false'
+
       - name: build
         run: npm run build
     
